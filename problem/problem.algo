@@ -1,0 +1,49 @@
+
+
+// procedure dot product to calculate ps
+PROCEDURE dot_product(v1 : ARRAY, v2 : ARRAY, n : INTEGER, ps : OUT REAL)
+BEGIN
+    ps ← 0
+
+    FOR i FROM 0 TO n - 1 STEP 1 DO
+        ps ← ps + v1[i] * v2[i]
+    END_FOR
+END_PROCEDURE
+
+ALGORITHM dotProduct
+
+VAR
+    n, m : INTEGER
+    i, j : INTEGER
+    v1, v2 : ARRAY[0..100] OF REAL
+    ps : REAL
+
+BEGIN
+    READ n   // number of vector pairs
+
+    FOR i FROM 0 TO n-1 STEP 1 DO
+       WRITE("enter size of vector:")
+        READ(m)  
+
+        // Input first vector
+        FOR j FROM 0 TO m - 1 STEP 1 DO
+            READ (v1[j])
+        END_FOR
+
+        // Input second vector
+        FOR j FROM 0 TO m - 1 STEP 1 DO
+            READ (v2[j])
+        END_FOR
+
+        // Call procedure
+        CALL dot_product(v1, v2, m, ps)
+
+        IF ps = 0 THEN
+            WRITE ("Orthogonal")
+        ELSE
+            WRITE ("Not Orthogonal")
+        END_IF
+
+    END_FOR
+
+END
